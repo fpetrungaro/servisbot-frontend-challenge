@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A getting started guide for this Server-Side ServisBOT rendering app.
+A getting started guide for this Server-Side ServisBOT app.
 
 Main Features:
 * Server-side rendering: implemented server-side rendering for a more performant application
@@ -10,6 +10,8 @@ Main Features:
 * 0 vulnerabilities for the NPM packages installed
 * Common API endpoint for Logs
 * Minimal set of dependencies in package.json
+* APIs have been annotated with @swagger decorator and documented in Swagger
+* API error handling
 
 ## Getting started
 
@@ -67,3 +69,23 @@ npm run dev
 
 
 ## Documentation
+
+Documentation is based on Swagger
+
+```shell
+npm install swagger-ui-react swagger-jsdoc @types/swagger-ui-react
+```
+
+Browse
+
+```shell
+http://localhost:3000/swagger
+```
+
+
+
+## TODOS
+
+* Implemenent API Authorization
+* Use database for data
+* Use server-side pagination for a better performance

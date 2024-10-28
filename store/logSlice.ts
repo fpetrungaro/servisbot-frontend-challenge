@@ -40,7 +40,7 @@ export const fetchLogs = createAsyncThunk(
         if (!response.ok) {
       throw new Error('Failed to fetch logs');
     }
-    return response.json();
+    return await response.json();
   }
 );
 

@@ -23,7 +23,7 @@ export const fetchBots = createAsyncThunk<Bot[]>(
     if (!response.ok) {
       throw new Error('Failed to fetch bots');
     }
-    return response.json(); // Assuming the API returns bots in the expected format
+    return await response.json(); // Assuming the API returns bots in the expected format
   }
 );
 
