@@ -32,8 +32,7 @@ npm install next-redux-wrapper
 ```shell
 /pages
   ├── index.tsx                 # Main page for bot list
-  ├── bot/[botId].tsx           # Displays workers for a specific bot
-  ├── bot/[botId]/logs.tsx      # Displays logs for a specific bot
+  ├── bot/[botId].tsx           # Displays workers and logs for a specific bot
   ├── worker/[workerId].tsx     # Displays logs for a worker 
 /store
   ├── index.ts                  # Redux store setup
@@ -59,4 +58,9 @@ Summary
 This setup meets the requirements with clear structure and modularized code, allowing each page to handle its own responsibility effectively.
 
 ## Run the App
+```shell
+npm run dev
+```
 
+
+## Documentation

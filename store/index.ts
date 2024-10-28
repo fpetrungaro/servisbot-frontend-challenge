@@ -11,6 +11,8 @@ export const makeStore = () => configureStore({
     workers: workerReducer,
     logs: logReducer,
   },
+  // Enable Redux DevTools extension in development mode
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export type AppStore = ReturnType<typeof makeStore>;

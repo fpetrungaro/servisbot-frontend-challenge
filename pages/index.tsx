@@ -19,7 +19,7 @@ const Home = () => {
   return (
     <Container>
       <Typography variant="h4" gutterBottom>
-        Bot List
+        Welcome to the ServisBOT App
       </Typography>
       {loadingBots && <p>Loading bots...</p>}
       {errorBots && <p>Error fetching bots: {errorBots}</p>}
