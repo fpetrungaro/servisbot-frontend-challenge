@@ -2,11 +2,11 @@
 
 ## Introduction
 
-A getting started guide for this Server-Side ServisBOT app.
+A getting started guide for this Server-Side rendering ServisBOT app.
 
-Main Features:
-* Server-side rendering: implemented server-side rendering for a more performant application
-* Leverage dynamic routing of NExt.js
+## Main Features
+* Server-side rendering: implemented server-side rendering for better performance
+* Leverage dynamic routing of Next.js
 * 0 vulnerabilities for the NPM packages installed
 * Common API endpoint for Logs
 * Minimal set of dependencies in package.json
@@ -21,15 +21,14 @@ Node and NPM installed
 
 ### Project setup
 
-Create a new Next.js app with TypeScript support
+Install the dependencies
 ```shell
-npx create-next-app@latest --typescript .
+npm run install
 ```
-### Install required dependencies
 
+### Run the App
 ```shell
-npm install @mui/material @emotion/react @emotion/styled @reduxjs/toolkit react-redux redux-thunk
-npm install next-redux-wrapper
+npm run dev
 ```
 
 ## Project Structure
@@ -62,10 +61,9 @@ Summary
 •	worker/[workerId].tsx: Displays the list of logs for a specific worker within a bot.
 This setup meets the requirements with clear structure and modularized code, allowing each page to handle its own responsibility effectively.
 
-## Run the App
-```shell
-npm run dev
-```
+
+
+## Test
 
 
 ## Documentation
@@ -82,10 +80,8 @@ Browse
 http://localhost:3000/swagger
 ```
 
-
-
 ## TODOS
 
-* Implemenent API Authorization
-* Use database for data
-* Use server-side pagination for a better performance
+* Implement API Authentication
+* Use database for data storage
+* Use server-side pagination for better performance
