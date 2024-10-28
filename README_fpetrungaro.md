@@ -6,7 +6,10 @@ A getting started guide for this Server-Side ServisBOT rendering app.
 
 Main Features:
 * Server-side rendering: implemented server-side rendering for a more performant application
+* Leverage dynamic routing of NExt.js
 * 0 vulnerabilities for the NPM packages installed
+* Common API endpoint for Logs
+* Minimal set of dependencies in package.json
 
 ## Getting started
 
@@ -31,9 +34,9 @@ npm install next-redux-wrapper
 
 ```shell
 /pages
-  ├── index.tsx                 # Main page for bot list
-  ├── bot/[botId].tsx           # Displays workers and logs for a specific bot
-  ├── worker/[workerId].tsx     # Displays logs for a worker 
+  ├── index.tsx                # Main bot list page
+  ├── bot/[botId].tsx          # Bot detail page with workers and logs for a bot
+  └── bot/[botId]/worker/[workerId].tsx  # Worker detail page showing logs for a specific worker associated to a specific bot
 /store
   ├── index.ts                  # Redux store setup
   ├── botSlice.ts               # Redux slice for managing bots

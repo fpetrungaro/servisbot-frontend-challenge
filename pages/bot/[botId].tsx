@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { AppState } from '../../store';
 import { fetchWorkersByBotName } from '../../store/workerSlice'; // Action to fetch workers
-import { fetchLogsByBot } from '../../store/logSlice'; // Action to fetch logs
+import { fetchLogs } from '../../store/logSlice'; // Action to fetch logs
 import WorkerList from '../../components/WorkerList';
 import LogList from '../../components/LogList';
 import { Container, Typography } from '@mui/material';
@@ -27,14 +27,15 @@ const BotDetail = () => {
   const errorWorkers = useSelector((state: AppState) => state.workers.error);
   const errorLogs = useSelector((state: AppState) => state.logs.error);
 
-  // Get the bot name based on the botId
   const bots = useSelector((state: AppState) => state.bots.bots);
   const bot = bots.find(b => b.id === botId) || { name: '' }; // Find the bot by ID
 
   useEffect(() => {
     if (bot.name) {
       dispatch(fetchWorkersByBotName(bot.name)); // Fetch workers for the specific bot by name
-      dispatch(fetchLogsByBot(bot.id)); // Fetch logs for the specific bot by ID
+    }
+    if (bot.id) {
+        dispatch(fetchLogs({ botId: bot.id })); // Fetch logs for the specific bot by ID
     }
   }, [dispatch, bot.name, bot.id]);
 
@@ -45,10 +46,13 @@ const BotDetail = () => {
       </Typography>
       {loadingWorkers && <p>Loading workers...</p>}
       {errorWorkers && <p>Error fetching workers: {errorWorkers}</p>}
-      <WorkerList workers={workers} />
+      <WorkerList botId={String(botId)} workers={workers} />
 
       <Typography variant="h4" gutterBottom style={{ marginTop: '2rem' }}>
         Logs for Bot: {bot.name}
+      </Typography>
+        <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>
+        {logs.length} logs found
       </Typography>
       {loadingLogs && <p>Loading logs...</p>}
       {errorLogs && <p>Error fetching logs: {errorLogs}</p>}

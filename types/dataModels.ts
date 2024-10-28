@@ -2,7 +2,7 @@
 export interface Bot {
   id: string;
   name: string;
-  description?: string;
+  description?: string; // optional description
   status: 'DISABLED' | 'ENABLED' | 'PAUSED';
   created: number;
 }

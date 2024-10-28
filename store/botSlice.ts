@@ -1,7 +1,6 @@
 // Bot slice for Bot State management
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Bot } from '../types/dataModels';
-import {BOTS_URL} from "@/constants";
+import { createSlice, createAsyncThunk } from  '@reduxjs/toolkit';
+import { Bot } from '@/types/dataModels';
 
 interface BotState {
   bots: Bot[];
@@ -19,7 +18,8 @@ const initialState: BotState = {
 export const fetchBots = createAsyncThunk<Bot[]>(
   'bots/fetchBots',
   async () => {
-      const response = await fetch(BOTS_URL);
+      const response = await fetch('api/bots');
+      //const bots: Bot[] = await response.json();
     if (!response.ok) {
       throw new Error('Failed to fetch bots');
     }

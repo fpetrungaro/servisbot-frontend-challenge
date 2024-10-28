@@ -1,7 +1,7 @@
 // worker slice for worker State management
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { Worker } from '../types';
-import {WORKERS_URL} from "@/constants"; // Adjust the import according to your types
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { Worker } from '@/types/dataModels';
+
 
 // Define initial state
 const initialState = {
@@ -14,7 +14,8 @@ const initialState = {
 export const fetchWorkersByBotName = createAsyncThunk(
   'workers/fetchByBotName',
   async (botName: string) => {
-    const response = await fetch(`${WORKERS_URL}?bot=${encodeURIComponent(botName)}`);
+    //const response = await fetch(`${WORKERS_URL}?name=${encodeURIComponent(botName)}`);
+      const response = await fetch(`/api/workers/bot/${botName}`);
     if (!response.ok) {
       throw new Error('Failed to fetch workers');
     }
@@ -32,9 +33,9 @@ const workerSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchWorkersByBotName.fulfilled, (state, action) => {
+      .addCase(fetchWorkersByBotName.fulfilled, (state, action: PayloadAction) => {
         state.loading = false;
-        state.workers = action.payload; // Assume the API returns an array of workers
+        state.workers = action.payload; // The API returns an array of workers
       })
       .addCase(fetchWorkersByBotName.rejected, (state, action) => {
         state.loading = false;

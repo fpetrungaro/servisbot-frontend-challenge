@@ -5,9 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d341bcb-e17d-4eb7-86e0-09fb2eadbd95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/pages/api/bots/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/api/logs.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/api/workers/bot/[botName].ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/bot/[botId]/worker/[workerId].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README_fpetrungaro.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_fpetrungaro.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/WorkerList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/WorkerList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/bot/[botId].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/bot/[botId].tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/worker/[workerId].tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/data/bots.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/bots.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/data/logs.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/data/logs_all.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/logs_all.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/data/workers.json" beforeDir="false" afterPath="$PROJECT_DIR$/data/workers.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/botSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/botSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/logSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/logSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/store/workerSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/workerSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/types/dataModels.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/dataModels.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +73,8 @@
       <recent name="$PROJECT_DIR$" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pages/api/logs/bot/[botId]/worker" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/public" />
       <recent name="$PROJECT_DIR$/pages/worker" />
     </key>
@@ -79,7 +95,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730041246203</updated>
-      <workItem from="1730041247245" duration="19258000" />
+      <workItem from="1730041247245" duration="33477000" />
     </task>
     <servers />
   </component>
