@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="4d341bcb-e17d-4eb7-86e0-09fb2eadbd95" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README_fpetrungaro.md" beforeDir="false" afterPath="$PROJECT_DIR$/README_fpetrungaro.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/logs_all.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/swagger.ts" beforeDir="false" afterPath="$PROJECT_DIR$/lib/swagger.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/api-docs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/api-docs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/bots/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/bots/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/logs.ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/logs.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/api/workers/bot/[botName].ts" beforeDir="false" afterPath="$PROJECT_DIR$/pages/api/workers/bot/[botName].ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/botSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/botSlice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/store/logSlice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/store/logSlice.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1730041246203</updated>
-      <workItem from="1730041247245" duration="40037000" />
+      <workItem from="1730041247245" duration="40453000" />
     </task>
     <servers />
   </component>

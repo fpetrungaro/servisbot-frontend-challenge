@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { AppState } from '../store';
 import { fetchBots } from '../store/botSlice';
 import BotList from '../components/BotList';
-import { Container, Typography } from '@mui/material';
+import {Button, Container, Typography} from '@mui/material';
+import Link from "next/link";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,15 @@ const Home = () => {
       <Typography variant="h4" gutterBottom>
         Welcome to the ServisBOT App
       </Typography>
+        {/* Swagger UI Link */}
+      <Typography variant="body1" gutterBottom>
+        Visit the <Link href="/swagger" target="_blank" passHref>
+          <Button variant="contained" color="primary">
+            Swagger API Documentation
+          </Button>
+        </Link>
+      </Typography>
+
       {loadingBots && <p>Loading bots...</p>}
       {errorBots && <p>Error fetching bots: {errorBots}</p>}
       <BotList bots={bots} />
