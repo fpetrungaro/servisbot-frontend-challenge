@@ -1,23 +1,37 @@
 [
-  {
-    "id": "04140c19-0c46-43c6-8e78-f459cd3b3370",
-    "name": "Bot One",
-    "description": "First Bot",
-    "status": "DISABLED",
-    "created": 1713809849892
-  },
-  {
-    "id": "22526dec-4e04-4815-a641-ee6c71cbc5a9",
-    "name": "Bot Two",
-    "description": "Second Bot",
-    "status": "ENABLED",
-    "created": 1713774119964
-  },
-  {
-    "id": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",
-    "name": "Bot Three",
-    "description": "Third Bot",
-    "status": "PAUSED",
-    "created": 1713762074682
-  }
+    {
+        "id": "04140c19-0c46-43c6-8e78-f459cd3b3370",
+        "name": "Chat Bot",
+        "description": "Chat Bot description",
+        "status": "DISABLED",
+        "created": 1713809849892
+    },
+    {
+        "id": "22526dec-4e04-4815-a641-ee6c71cbc5a9",
+        "name": "Dependa Bot",
+        "description": "Dependa Bot description",
+        "status": "ENABLED",
+        "created": 1730226287000
+    },
+    {
+        "id": "44700aa2-cba6-43d2-9ad4-8d8a499bd356",
+        "name": "Jenkins Bot",
+        "description": "Jenkins Bot description",
+        "status": "PAUSED",
+        "created": 1713762074682
+    },
+    {
+        "id": "7a5a20f7-ad33-497e-8cc3-4968f7410093",
+        "name": "Lonely Bot",
+        "description": "Lonely Bot Description",
+        "status": "DISABLED",
+        "created": 1713762074682
+    },
+    {
+        "id": "1a37fbe9-0c83-4c24-b221-3d6408e06d17",
+        "name": "Shopping Bot",
+        "description": "Shoppoing Bot Decription. This is a long descrtiption",
+        "status": "ENABLED",
+        "created": 1713762074684
+    }
 ]

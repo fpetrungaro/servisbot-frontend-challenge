@@ -4,10 +4,11 @@ import { LogSummary } from '@/types/dataModels';
 import { Paper, Typography } from '@mui/material';
 
 interface LogListProps {
+  from: string
   logs: LogSummary[];
 }
 
-const LogList: React.FC<LogListProps> = ({ logs }) => {
+const LogList: React.FC<LogListProps> = ({ logs, from }) => {
   const columns: GridColDef[] = [
     {
       field: 'id',
@@ -15,7 +16,7 @@ const LogList: React.FC<LogListProps> = ({ logs }) => {
       sortable: true,
       flex: 1,
       renderCell: (params) => (
-        <Link href={`/log/${params.value}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+        <Link href={`/log/${params.value}?from=${from}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
           {params.value}
         </Link>
       ),
@@ -27,16 +28,20 @@ const LogList: React.FC<LogListProps> = ({ logs }) => {
       flex: 1,
       renderCell: (params) => {
         const date = new Date(params.value);
-        return date.toISOString(); // Format the date as needed
+        return date.toISOString(); // Format the date as ISO UTC
       },
     }
   ];
 
+  if (logs.length === 0) {
+    return (
+      <Paper style={{ marginTop: '1.5rem', padding: '1rem' }}>
+        <Typography variant="body1">NO Logs found</Typography>
+      </Paper>
+    );
+  }
   return (
-    <Paper style={{ marginTop: '1.5rem', padding: '1rem' }}>
-      <Typography variant="h5" style={{ marginBottom: '1rem' }}>
-        Log List
-      </Typography>
+    <div>
       <div style={{ height: 400, width: '100%' }}>
           <DataGrid
               rows={logs}
@@ -53,6 +58,10 @@ const LogList: React.FC<LogListProps> = ({ logs }) => {
               getRowId={(row) => row.id} // Set the unique id field
               hideFooterPagination={logs.length < 5} // Conditionally hide pagination footer
               sx={{
+                  '& .MuiDataGrid-sortIcon': {
+                      color: '#ffffff', // Change the color of the sorting arrows
+                      fontSize: '1.2rem', // Adjust the size of the sorting arrows
+                  },
                   '& .MuiDataGrid-columnHeader': {
                       backgroundColor: '#1976d2', // Header background color
                       color: '#ffffff', // Header text color
@@ -70,7 +79,7 @@ const LogList: React.FC<LogListProps> = ({ logs }) => {
               }}
           />
       </div>
-    </Paper>
+    </div>
   );
 };
 

@@ -11,7 +11,8 @@ A getting started guide for this Server-Side rendering ServisBOT app.
 * Common API endpoint for Logs
 * Minimal set of dependencies in package.json
 * APIs have been annotated with @swagger decorator and documented in Swagger
-* API error handling
+* Pagination, Sorting, Filtering implemented with material UI built-in features
+* 
 
 ## Getting started
 

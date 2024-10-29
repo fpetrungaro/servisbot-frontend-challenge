@@ -12,24 +12,27 @@ const BotList: React.FC<BotListProps> = ({ bots }) => {
     {
       field: 'name',
       headerName: 'Bot Name',
-      sortable: true,
       flex: 1,
       renderCell: (params) => (
         <Link href={`/bot/${params.row.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
           {params.value}
         </Link>
       ),
+      valueGetter: (value, row) => value
     },
     {
       field: 'description',
       headerName: 'Description',
-      sortable: true,
+      flex: 1,
+    },
+    {
+      field: 'status',
+      headerName: 'Status',
       flex: 1,
     },
     {
       field: 'created',
       headerName: 'Creation Date',
-      sortable: true,
       flex: 1,
       renderCell: (params) => {
         const date = new Date(params.value); // Convert to Date object
@@ -51,6 +54,10 @@ const BotList: React.FC<BotListProps> = ({ bots }) => {
           disableRowSelectionOnClick
           getRowId={(row) => row.id} // Set the unique id field
           sx={{
+             '& .MuiDataGrid-sortIcon': {
+              color: '#ffffff', // Change the color of the sorting arrows
+              fontSize: '1.2rem', // Adjust the size of the sorting arrows
+            },
             '& .MuiDataGrid-columnHeader': {
               backgroundColor: '#1976d2', // Header background color
                 color: '#ffffff', // Header text color

@@ -34,16 +34,13 @@ const WorkerList: React.FC<WorkerListProps> = ({ botId, workers }) => {
       flex: 1,
       renderCell: (params) => {
         const date = new Date(params.value);
-        return date.toISOString(); // Format the date as needed
+        return date.toISOString(); // Format the date to ISO UTC
       },
     },
   ];
 
   return (
     <Paper style={{ marginTop: '1.5rem', padding: '1rem' }}>
-      <Typography variant="h5" style={{ marginBottom: '1rem' }}>
-        Worker List
-      </Typography>
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid
           rows={workers}
@@ -53,6 +50,10 @@ const WorkerList: React.FC<WorkerListProps> = ({ botId, workers }) => {
           getRowId={(row) => row.id} // Set the unique id field
           hideFooterPagination={workers.length < 5} // Conditionally hide pagination footer
           sx={{
+            '& .MuiDataGrid-sortIcon': {
+              color: '#ffffff', // Change the color of the sorting arrows
+              fontSize: '1.2rem', // Adjust the size of the sorting arrows
+            },
             '& .MuiDataGrid-columnHeader': {
               backgroundColor: '#1976d2', // Header background color
               color: '#ffffff', // Header text color

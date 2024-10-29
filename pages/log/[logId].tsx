@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { AppState } from '@/store';
 import { fetchLogById, selectLog } from '../../store/logSlice';
-import {Container, Typography, Box, Paper, Grid, TextareaAutosize} from '@mui/material';
+import {Container, Typography, Paper, Grid, TextareaAutosize} from '@mui/material';
+import Breadcrumb from "@/components/Breadcrumbs";
 
 const LogDetail = () => {
   const router = useRouter();
-  const { logId } = router.query;
+  const { from,  logId } = router.query;
 
   const dispatch = useDispatch();
   const log = useSelector(selectLog);
@@ -19,10 +20,26 @@ const LogDetail = () => {
   }, [dispatch, logId]);
 
   if (!log) return <p>Loading log details...</p>;
+  let breadcrumbItems = []
+  if (from == 'worker') {
+    breadcrumbItems = [
+      {label: 'Home', href: '/'},
+      {label: `Bot ${log.bot}`, href: `/bot/${log.bot}`},
+      {label: `Worker ${log.worker}`, href: `/bot/${log.bot}/worker/${log.worker}`},
+      {label: `Log ${logId}`, href: `/log/${logId}`},
+    ];
+  } else {
+    breadcrumbItems = [
+      {label: 'Home', href: '/'},
+      {label: `Bot ${log.bot}`, href: `/bot/${log.bot}`},
+      {label: `Log ${logId}`, href: `/log/${logId}`},
+    ];
+  }
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
+      <Breadcrumb items={breadcrumbItems}/>
+      <Typography variant="h5" gutterBottom style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
         Log {logId}
       </Typography>
       <Grid container spacing={2}>

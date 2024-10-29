@@ -11,7 +11,9 @@ import { fetchWorkersByBotName } from '@/store/workerSlice'; // Action to fetch 
 import { fetchLogSummaries, selectLogSummaries } from '@/store/logSlice'; // Action to fetch log summaries
 import WorkerList from '../../components/WorkerList';
 import LogList from '../../components/LogList';
-import { Container, Typography } from '@mui/material';
+import {Accordion, AccordionDetails, AccordionSummary, Container, Typography} from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Breadcrumb from "@/components/Breadcrumbs";
 
 const BotDetail = () => {
   const router = useRouter();
@@ -32,27 +34,47 @@ const BotDetail = () => {
   const bots = useSelector((state: AppState) => state.bots.bots);
   const bot = bots.find(b => b.id === botId) || { name: '' }; // Find the bot by ID
 
+  const breadcrumbItems = [
+    { label: 'Home', href: '/' },
+    { label: `Bot ${botId}`, href: `/bot/${botId}` },
+  ];
+
   useEffect(() => {
     if (bot.name) {
       dispatch(fetchWorkersByBotName(bot.name)); // Fetch workers for the specific bot by name
     }
-    if (bot.id) {
-        dispatch(fetchLogSummaries({ botId: bot.id })); // Fetch log summaries for the specific bot by ID
+    if (botId) {
+        dispatch(fetchLogSummaries({ botId: botId })); // Fetch log summaries for the specific bot by ID
     }
-  }, [dispatch, bot.name, bot.id]);
+  }, [dispatch, bot, bot.id]);
 
   return (
-    <Container>
-      <Typography variant="h4" gutterBottom style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
-        Bot: {bot.name} ({bot.id})
-      </Typography>
-      {loadingWorkers && <p>Loading workers...</p>}
-      {errorWorkers && <p>Error fetching workers: {errorWorkers}</p>}
-      <WorkerList botId={String(botId)} workers={workers} />
-      {loadingLogs && <p>Loading logs...</p>}
-      {errorLogs && <p>Error fetching logs: {errorLogs}</p>}
-      <LogList logs={logs} />
-    </Container>
+        <Container>
+          <Breadcrumb items={breadcrumbItems}/>
+          <Typography variant="h5" gutterBottom style={{color: '#1976d2', marginLeft: '0.5rem'}}>
+            {bot.name} ({bot.id})
+          </Typography>
+          <Accordion defaultExpanded>
+            <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+              <Typography variant="h6">Workers</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {loadingWorkers && <p>Loading workers...</p>}
+              {errorWorkers && <p style={{ color: 'red' }}>Error fetching workers: {errorWorkers}</p>}
+              <WorkerList botId={String(botId)} workers={workers}/>
+            </AccordionDetails>
+          </Accordion>
+          <Accordion>
+            <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
+              <Typography variant="h6">Logs</Typography>
+            </AccordionSummary>
+            <AccordionDetails>
+              {loadingLogs && <p>Loading logs...</p>}
+              {errorLogs && <p style={{color: 'red'}}>Error fetching logs: {errorLogs}</p>}
+                <LogList logs={logs} from="bot"/>
+            </AccordionDetails>
+          </Accordion>
+        </Container>
   );
 };
 

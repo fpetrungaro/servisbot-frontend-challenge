@@ -40,6 +40,7 @@ const workerSlice = createSlice({
       .addCase(fetchWorkersByBotName.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to fetch workers';
+        state.workers = []
       });
   },
 });

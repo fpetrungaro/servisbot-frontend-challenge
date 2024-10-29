@@ -42,6 +42,7 @@ const workerIds = [
   'c41a527e-0b14-4f56-bc0d-b1c77833d50a'
 ];
 
+console.error('fabio')
 const createBot = () => ({
   id: faker.string.uuid(),
   created: faker.number.int({ min: moment().startOf('day').unix() * 1000, max: moment().endOf('day').unix() * 1000 }),
@@ -77,3 +78,5 @@ const writeLogs = () => {
   const jsonString = JSON.stringify(logs, null, 2);
   fs.writeFile('logs.json', jsonString, () => console.log('Logs Written'));
 }
+
+writeWorkers()

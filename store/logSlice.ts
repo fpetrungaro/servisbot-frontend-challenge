@@ -70,6 +70,7 @@ const logSlice = createSlice({
       .addCase(fetchLogSummaries.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to load log summaries';
+        state.logSummaries = []
       })
       .addCase(fetchLogById.pending, (state) => {
         state.loading = true;
@@ -81,6 +82,7 @@ const logSlice = createSlice({
       .addCase(fetchLogById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.error.message || 'Failed to load log';
+        state.logSummaries = []
       });
   },
 });
