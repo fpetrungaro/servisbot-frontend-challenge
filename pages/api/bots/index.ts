@@ -1,6 +1,9 @@
 /*
 TODO: This Handler could be re-worked to access the database instead of the local file-system
  */
+import type { NextApiRequest, NextApiResponse } from 'next';
+import path from 'path';
+import { promises as fs } from 'fs';
 /**
  * @swagger
  * /api/bots:
@@ -52,9 +55,6 @@ TODO: This Handler could be re-worked to access the database instead of the loca
  *                   type: string
  *                   example: "Internal server error"
  */
-import type { NextApiRequest, NextApiResponse } from 'next';
-import path from 'path';
-import { promises as fs } from 'fs';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const filePath = path.join(process.cwd(), 'data', 'bots.json');

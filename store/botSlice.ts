@@ -1,6 +1,7 @@
 // Bot slice for Bot State management
 import { createSlice, createAsyncThunk } from  '@reduxjs/toolkit';
 import { Bot } from '@/types/dataModels';
+import {AppState} from "@/store/index";
 
 interface BotState {
   bots: Bot[];
@@ -48,5 +49,6 @@ const botSlice = createSlice({
   },
 });
 
+export const selectBots = (state: AppState) => state.bots.bots
 // Export the reducer
 export const botReducer = botSlice.reducer;

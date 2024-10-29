@@ -6,7 +6,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
 import { AppState } from '@/store';
-import { fetchLogs } from '@/store/logSlice';
+import {fetchLogSummaries, selectLogSummaries} from '@/store/logSlice';
 import LogList from '../../../../components/LogList';
 import { Container, Typography } from '@mui/material';
 
@@ -15,13 +15,13 @@ const WorkerLogs = () => {
   const { botId, workerId } = router.query;
   const dispatch = useDispatch();
 
-  const logs = useSelector((state: AppState) => state.logs.logs);
+  const logs = useSelector(selectLogSummaries);
   const loadingLogs = useSelector((state: AppState) => state.logs.loading);
   const errorLogs = useSelector((state: AppState) => state.logs.error);
 
   useEffect(() => {
     if (workerId && botId) {
-      dispatch(fetchLogs({ workerId: String(workerId), botId: String(botId) })); // Fetch logs for the specific worker and bot
+      dispatch(fetchLogSummaries({ botId: String(botId), workerId: String(workerId) })); // Fetch logs for the specific worker and bot
     }
   }, [dispatch, workerId, botId]);
 
@@ -30,11 +30,11 @@ const WorkerLogs = () => {
       <Typography variant="h4" gutterBottom>
         Logs for Worker: {workerId} (Bot: {botId})
       </Typography>
-      <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>
-        {logs.length} logs found
-      </Typography>
       {loadingLogs && <p>Loading logs...</p>}
       {errorLogs && <p>Error fetching logs: {errorLogs}</p>}
+        <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>
+        {logs.length} logs found
+      </Typography>
       <LogList logs={logs} />
     </Container>
   );

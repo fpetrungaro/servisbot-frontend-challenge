@@ -1,17 +1,19 @@
 // LogList component
 import { List, ListItem, ListItemText } from '@mui/material';
-import { Log } from '../types/dataModels';
+import {LogSummary} from '../types/dataModels';
+import Link from "next/link";
 
 interface LogListProps {
-  logs: Log[];
+  logs: LogSummary[];
 }
 
 const LogList: React.FC<LogListProps> = ({ logs }) => {
   return (
     <List>
       {logs.map(log => (
-        <ListItem key={log.id}>
-          <ListItemText primary={log.message} secondary={`Created on ${new Date(log.created).toLocaleString()}`} />
+        <ListItem key={log.id} component={Link} href={`/log/${log.id}`}>
+          <ListItemText primary={`Log ID: ${log.id}`}
+                        secondary={`Created on ${new Date(log.created).toISOString()}`} />
         </ListItem>
       ))}
     </List>

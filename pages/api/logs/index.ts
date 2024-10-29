@@ -1,3 +1,6 @@
+import type {NextApiRequest, NextApiResponse} from 'next';
+import path from 'path';
+import {promises as fs} from 'fs';
 /**
  * @swagger
  * /api/logs:
@@ -19,7 +22,7 @@
  *         description: The ID of the worker to filter logs (optional).
  *     responses:
  *       200:
- *         description: A list of logs for the specified bot, optionally filtered by worker.
+ *         description: A list of log summaries for the specified bot, optionally filtered by worker.
  *         content:
  *           application/json:
  *             schema:
@@ -34,15 +37,6 @@
  *                     type: string
  *                     format: date-time
  *                     description: The timestamp when the log entry was created.
- *                   message:
- *                     type: string
- *                     description: The content or message of the log entry.
- *                   bot:
- *                     type: string
- *                     description: The ID of the associated bot.
- *                   worker:
- *                     type: string
- *                     description: The ID of the associated worker (if applicable).
  *       400:
  *         description: Bad request, invalid or missing botId parameter.
  *         content:
@@ -74,9 +68,6 @@
  *                   type: string
  *                   example: "Internal server error"
  */
-import type {NextApiRequest, NextApiResponse} from 'next';
-import path from 'path';
-import {promises as fs} from 'fs';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const {botId, workerId} = req.query;
@@ -86,15 +77,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         const logs = JSON.parse(fileContents);
 
         // Filter logs by botId and workerId, if provided
-        const filteredLogs = logs.filter((log: { bot: string; worker: string }) => {
-            const matchesBot = botId ? log.bot === botId : true;
-            const matchesWorker = workerId ? log.worker === workerId : true;
-            return matchesBot && matchesWorker;
-        });
-        if (filteredLogs.length === 0) {
+        // Filter logs and map to log summaries (id and created only)
+        const logSummaries = logs
+            .filter((log: { bot: string; worker: string }) => {
+                const matchesBot = botId ? log.bot === botId : true;
+                const matchesWorker = workerId ? log.worker === workerId : true;
+                return matchesBot && matchesWorker;
+            })
+            .map((log: { id: string; created: string }) => ({
+                id: log.id,
+                created: log.created,
+            }));
+
+        if (logSummaries.length === 0) {
           return res.status(404).json({error: `Logs not found for bot ${botId}${workerId ? ` and worker ${workerId}` : ''}.`});
         }
-        res.status(200).json(filteredLogs);
+        res.status(200).json(logSummaries);
     } catch (error) {
         console.error('Error reading logs:', error);
         res.status(500).json({error: 'Internal server error'});

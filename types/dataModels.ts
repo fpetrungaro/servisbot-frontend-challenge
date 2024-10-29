@@ -15,9 +15,14 @@ export interface Worker {
   created: number;
 }
 
+export interface LogSummary {
+  id: string;
+  created: string;
+}
+
 export interface Log {
   id: string;
-  created: number;
+  created: string;
   message: string;
   bot: string;
   worker: string;
