@@ -43,21 +43,14 @@ const BotDetail = () => {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        Workers for Bot: {bot.name}
+      <Typography variant="h4" gutterBottom style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
+        Bot: {bot.name} ({bot.id})
       </Typography>
       {loadingWorkers && <p>Loading workers...</p>}
       {errorWorkers && <p>Error fetching workers: {errorWorkers}</p>}
       <WorkerList botId={String(botId)} workers={workers} />
-
-      <Typography variant="h4" gutterBottom style={{ marginTop: '2rem' }}>
-        Logs for Bot: {bot.name}
-      </Typography>
       {loadingLogs && <p>Loading logs...</p>}
       {errorLogs && <p>Error fetching logs: {errorLogs}</p>}
-      <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>
-        {logs.length} logs found
-      </Typography>
       <LogList logs={logs} />
     </Container>
   );

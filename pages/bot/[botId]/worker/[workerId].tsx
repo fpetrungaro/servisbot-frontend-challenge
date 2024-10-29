@@ -27,14 +27,11 @@ const WorkerLogs = () => {
 
   return (
     <Container>
-      <Typography variant="h4" gutterBottom>
-        Logs for Worker: {workerId} (Bot: {botId})
+      <Typography variant="h4" gutterBottom style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
+        Worker: {workerId} (Bot: {botId})
       </Typography>
       {loadingLogs && <p>Loading logs...</p>}
       {errorLogs && <p>Error fetching logs: {errorLogs}</p>}
-        <Typography variant="h5" gutterBottom style={{ marginTop: '2rem' }}>
-        {logs.length} logs found
-      </Typography>
       <LogList logs={logs} />
     </Container>
   );

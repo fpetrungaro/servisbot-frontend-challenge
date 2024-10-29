@@ -1,36 +1,75 @@
-//Bot list component
-
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import Link from 'next/link';
-import {List, ListItem, ListItemText} from '@mui/material';
-import {Bot} from '@/types/dataModels';
-import React from "react";
+import { Bot } from '@/types/dataModels';
+import { Paper, Typography } from '@mui/material';
 
 interface BotListProps {
-    bots: Bot[];
+  bots: Bot[];
 }
 
-const options = {
-  hour12: false,
-  fractionalSecondDigits: 3
-};
+const BotList: React.FC<BotListProps> = ({ bots }) => {
+  const columns: GridColDef[] = [
+    {
+      field: 'name',
+      headerName: 'Bot Name',
+      sortable: true,
+      flex: 1,
+      renderCell: (params) => (
+        <Link href={`/bot/${params.row.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+          {params.value}
+        </Link>
+      ),
+    },
+    {
+      field: 'description',
+      headerName: 'Description',
+      sortable: true,
+      flex: 1,
+    },
+    {
+      field: 'created',
+      headerName: 'Creation Date',
+      sortable: true,
+      flex: 1,
+      renderCell: (params) => {
+        const date = new Date(params.value); // Convert to Date object
+        return date.toISOString(); // Format the date as needed
+      },
+    },
+  ];
 
-const BotList: React.FC<BotListProps> = ({bots}) => {
-    return (
-        <List>
-            {bots.map(bot => (
-                <ListItem key={bot.id} component={Link} href={`/bot/${bot.id}`}>
-                    <ListItemText primary={bot.name}
-                                  secondary={
-                                      <React.Fragment>
-                                          <span>{bot.description}</span>
-                                          <br/>
-                                          <span>Created on: {new Date(bot.created).toISOString()}</span>
-                                      </React.Fragment>
-                                  }/>
-                </ListItem>
-            ))}
-        </List>
-    );
+  return (
+    <Paper style={{ marginTop: '1.5rem', padding: '1rem' }}>
+      <Typography variant="h5" style={{ marginBottom: '1rem' }}>
+        Bot List
+      </Typography>
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          rows={bots}
+          columns={columns}
+          autoPageSize
+          disableRowSelectionOnClick
+          getRowId={(row) => row.id} // Set the unique id field
+          sx={{
+            '& .MuiDataGrid-columnHeader': {
+              backgroundColor: '#1976d2', // Header background color
+                color: '#ffffff', // Header text color
+              fontWeight: 'bold',
+            },
+            '& .MuiDataGrid-row:nth-of-type(odd)': {
+              backgroundColor: '#f5f5f5', // Odd row color
+            },
+            '& .MuiDataGrid-row:nth-of-type(even)': {
+              backgroundColor: '#e0f7fa', // Even row color
+            },
+            '& .MuiDataGrid-row:hover': {
+              backgroundColor: '#b2ebf2', // Hover effect
+            },
+          }}
+        />
+      </div>
+    </Paper>
+  );
 };
 
 export default BotList;
