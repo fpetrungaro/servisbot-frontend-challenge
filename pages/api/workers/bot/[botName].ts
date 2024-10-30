@@ -1,6 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import path from 'path';
-import { promises as fs } from 'fs';
+import {readData} from "@/utils/fileReader";
 
 /**
  * @swagger
@@ -80,9 +79,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   }
 
   try {
-    const filePath = path.join(process.cwd(), 'data', 'workers.json');
-    const fileContents = await fs.readFile(filePath, 'utf-8');
-    const workers = JSON.parse(fileContents);
+    const workers = await readData('workers.json')
 
     // Filter workers associated with the given bot name
     const filteredWorkers = workers.filter((worker: { bot: string }) => worker.bot === botName);

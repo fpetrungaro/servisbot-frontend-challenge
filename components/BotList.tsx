@@ -18,7 +18,6 @@ const BotList: React.FC<BotListProps> = ({ bots }) => {
           {params.value}
         </Link>
       ),
-      valueGetter: (value, row) => value
     },
     {
       field: 'description',

@@ -1,10 +1,9 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import path from 'path';
-import { promises as fs } from 'fs';
+import {readData} from "@/utils/fileReader";
 
 /**
  * @swagger
- * /api/log/{logId}:
+ * /api/logs/{logId}:
  *   get:
  *     summary: Retrieve a log by ID
  *     description: Fetches detailed information of a log entry by its unique ID.
@@ -49,15 +48,12 @@ import { promises as fs } from 'fs';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const { logId } = req.query;
 
-  if (!logId || Array.isArray(logId)) {
+  if (!logId || logId.length < 36) {
     return res.status(400).json({ error: 'Invalid log ID' });
   }
 
   try {
-    const filePath = path.join(process.cwd(), 'data', 'logs.json');
-    const fileContents = await fs.readFile(filePath, 'utf-8');
-    const logs = JSON.parse(fileContents);
-
+    const logs = await readData('logs.json')
     const log = logs.find((log: { id: string }) => log.id === logId);
 
     if (!log) {
@@ -66,6 +62,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     res.status(200).json(log);
   } catch (error) {
-    res.status(500).json({ error: 'Internal server error' });
+    console.error('Error fetching log:', error);
+    res.status(500).json({ error: 'Internal server error: ' + error.message() });
   }
 }

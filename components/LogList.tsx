@@ -36,13 +36,12 @@ const LogList: React.FC<LogListProps> = ({ logs, from }) => {
   if (logs.length === 0) {
     return (
       <Paper style={{ marginTop: '1.5rem', padding: '1rem' }}>
-        <Typography variant="body1">NO Logs found</Typography>
+        <Typography variant="body1">No Logs found</Typography>
       </Paper>
     );
   }
   return (
-    <div>
-      <div style={{ height: 400, width: '100%' }}>
+      <div style={{height: 400, width: '100%'}}>
           <DataGrid
               rows={logs}
               columns={columns}
@@ -79,7 +78,6 @@ const LogList: React.FC<LogListProps> = ({ logs, from }) => {
               }}
           />
       </div>
-    </div>
   );
 };
 

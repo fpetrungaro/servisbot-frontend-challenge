@@ -1,6 +1,5 @@
 import type {NextApiRequest, NextApiResponse} from 'next';
-import path from 'path';
-import {promises as fs} from 'fs';
+import {readData} from "@/utils/fileReader";
 /**
  * @swagger
  * /api/logs:
@@ -72,10 +71,7 @@ import {promises as fs} from 'fs';
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const {botId, workerId} = req.query;
     try {
-        const filePath = path.join(process.cwd(), 'data', 'logs.json');
-        const fileContents = await fs.readFile(filePath, 'utf-8');
-        const logs = JSON.parse(fileContents);
-
+        const logs = await readData('logs.json')
         // Filter logs by botId and workerId, if provided
         // Filter logs and map to log summaries (id and created only)
         const logSummaries = logs
@@ -88,9 +84,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 id: log.id,
                 created: log.created,
             }));
-
         if (logSummaries.length === 0) {
-          return res.status(404).json({error: `Logs not found for bot ${botId}${workerId ? ` and worker ${workerId}` : ''}.`});
+          return res.status(404).json({error: `Logs not found for bot ${botId}${workerId ? ` 
+          and worker ${workerId}` : ''}.`});
         }
         res.status(200).json(logSummaries);
     } catch (error) {

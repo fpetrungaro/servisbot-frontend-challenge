@@ -64,8 +64,18 @@ This setup meets the requirements with clear structure and modularized code, all
 
 
 
-## Test
+## NPM tasks
 
+## Tests
+```shell
+npm run test
+```
+
+to run a test automatically when a file changes
+
+```shell
+npm run test:watch
+```
 
 ## Documentation
 
@@ -86,3 +96,4 @@ http://localhost:3000/swagger
 * Implement API Authentication
 * Use database for data storage
 * Use server-side pagination for better performance
+* i18n

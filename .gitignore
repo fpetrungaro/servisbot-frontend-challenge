@@ -12,6 +12,7 @@
 
 # testing
 /coverage
+*.snap
 
 # next.js
 /.next/
@@ -38,4 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# IDE
 .idea

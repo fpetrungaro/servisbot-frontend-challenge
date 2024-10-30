@@ -46,7 +46,7 @@ const BotDetail = () => {
     if (botId) {
         dispatch(fetchLogSummaries({ botId: botId })); // Fetch log summaries for the specific bot by ID
     }
-  }, [dispatch, bot, bot.id]);
+  }, [dispatch, bot, botId]);
 
   return (
         <Container>

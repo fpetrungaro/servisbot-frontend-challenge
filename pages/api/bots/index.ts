@@ -1,9 +1,5 @@
-/*
-TODO: This Handler could be re-worked to access the database instead of the local file-system
- */
 import type { NextApiRequest, NextApiResponse } from 'next';
-import path from 'path';
-import { promises as fs } from 'fs';
+import {readData} from "@/utils/fileReader";
 /**
  * @swagger
  * /api/bots:
@@ -57,16 +53,15 @@ import { promises as fs } from 'fs';
  */
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const filePath = path.join(process.cwd(), 'data', 'bots.json');
-  const fileContents = await fs.readFile(filePath, 'utf-8');
-  const bots = JSON.parse(fileContents);
+    //TODO: This ad the other handlers might be re-worked to access the database instead of the local file-system
     try {
+        const bots = await readData('bots.json');
         if (!bots) {
             return res.status(404).json({error: 'Bots not found'});
         }
         res.status(200).json(bots);
     } catch (error) {
+        console.error('Error fetching bots:', error);
         res.status(500).json({error: 'Internal server error'});
     }
-
 }
