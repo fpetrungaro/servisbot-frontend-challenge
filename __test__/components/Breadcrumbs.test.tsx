@@ -1,7 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Breadcrumb from '../../components/Breadcrumbs';
-import LogList from "@/components/LogList";
 
 describe('Breadcrumb Component', () => {
   const items  = [
