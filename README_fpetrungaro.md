@@ -35,18 +35,23 @@ npm run dev
 ## Project Structure
 
 ```shell
+
+
 /pages
   ├── index.tsx                # Main bot list page
+  ├── swagger.tsx              # Swagger page
   ├── bot/[botId].tsx          # Bot detail page with workers and logs for a bot
-  └── bot/[botId]/worker/[workerId].tsx  # Worker detail page showing logs for a specific worker associated to a specific bot
+  ├── bot/[botId]/worker/[workerId].tsx  # Worker detail page showing logs for a specific worker associated to a specific bot
+  └── api                       # API folder
 /store
   ├── index.ts                  # Redux store setup
   ├── botSlice.ts               # Redux slice for managing bots
   ├── workerSlice.ts            # Redux slice for managing workers
-  ├── logSlice.ts               # Redux slice for managing logs
+  └── logSlice.ts               # Redux slice for managing logs
 /components
   ├── BotList.tsx               # Bot list component
   ├── WorkerList.tsx            # Worker list component
+  ├── Breadcrumbs.tsx            # Breadcrumb Component
   └── LogList.tsx               # Log list component
 /types
   └── dataModels.ts             # TypeScript types for data models
@@ -54,6 +59,8 @@ npm run dev
   ├── bots.json                 # Dummy bot data
   ├── workers.json              # Dummy worker data
   └── logs.json                 # Dummy log data
+/__test__                       # Test folder
+/utils                          # Utils folder
 ```
 
 Summary
