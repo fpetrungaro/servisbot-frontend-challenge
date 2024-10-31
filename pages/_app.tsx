@@ -1,6 +1,6 @@
 //Wraps the App with Redux
 import { AppProps } from 'next/app';
-import { wrapper } from '@/store'; // Import wrapper from your store
+import { wrapper } from '@/store'; // Import wrapper from the store
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   return <Component {...pageProps} />;

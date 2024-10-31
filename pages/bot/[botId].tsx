@@ -6,7 +6,7 @@ It reuses 2 MUI components: WorkerList and LogList
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { AppState } from '../../store';
+import { AppState } from '@/store';
 import { fetchWorkersByBotName } from '@/store/workerSlice'; // Action to fetch workers
 import { fetchLogSummaries, selectLogSummaries } from '@/store/logSlice'; // Action to fetch log summaries
 import WorkerList from '../../components/WorkerList';
@@ -17,7 +17,7 @@ import Breadcrumb from "@/components/Breadcrumbs";
 
 const BotDetail = () => {
   const router = useRouter();
-  const { botId } = router.query;
+  const { botId, botName } = router.query;
 
   const dispatch = useDispatch();
 
@@ -31,28 +31,25 @@ const BotDetail = () => {
   const errorLogs = useSelector((state: AppState) => state.logs.error);
   const errorWorkers = useSelector((state: AppState) => state.workers.error);
 
-  const bots = useSelector((state: AppState) => state.bots.bots);
-  const bot = bots.find(b => b.id === botId) || { name: '' }; // Find the bot by ID
-
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
     { label: `Bot ${botId}`, href: `/bot/${botId}` },
   ];
 
   useEffect(() => {
-    if (bot.name) {
-      dispatch(fetchWorkersByBotName(bot.name)); // Fetch workers for the specific bot by name
+    if (botName) {
+      dispatch(fetchWorkersByBotName(botName)); // Fetch workers for the specific bot by name
     }
     if (botId) {
         dispatch(fetchLogSummaries({ botId: botId })); // Fetch log summaries for the specific bot by ID
     }
-  }, [dispatch, bot, botId]);
+  }, [dispatch, botName, botId]);
 
   return (
         <Container>
           <Breadcrumb items={breadcrumbItems}/>
           <Typography variant="h5" gutterBottom style={{color: '#1976d2', marginLeft: '0.5rem'}}>
-            {bot.name} ({bot.id})
+            {botName} ({botId})
           </Typography>
           <Accordion defaultExpanded>
             <AccordionSummary expandIcon={<ExpandMoreIcon/>}>
@@ -79,4 +76,3 @@ const BotDetail = () => {
 };
 
 export default BotDetail;
-

@@ -62,6 +62,7 @@ const logSlice = createSlice({
     builder
       .addCase(fetchLogSummaries.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(fetchLogSummaries.fulfilled, (state, action: PayloadAction<LogSummary[]>) => {
         state.loading = false;
@@ -74,6 +75,7 @@ const logSlice = createSlice({
       })
       .addCase(fetchLogById.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(fetchLogById.fulfilled, (state, action: PayloadAction<Log>) => {
         state.loading = false;
@@ -93,6 +95,3 @@ export const selectLog = (state: AppState) => state.logs.log;
 
 // Export the reducer
 export const logReducer = logSlice.reducer;
-
-
-

@@ -54,7 +54,6 @@ const WorkerList: React.FC<WorkerListProps> = ({ botId, workers }) => {
               autoPageSize
               disableRowSelectionOnClick
               getRowId={(row) => row.id} // Set the unique id field
-              hideFooterPagination={workers.length < 5} // Conditionally hide pagination footer
               sx={{
                   '& .MuiDataGrid-sortIcon': {
                       color: '#ffffff', // Change the color of the sorting arrows
