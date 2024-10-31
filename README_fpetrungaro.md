@@ -5,15 +5,14 @@
 A getting started guide for this Server-Side rendering ServisBOT app.
 
 ## Main Features
-* Server-side rendering: implemented server-side rendering for better performance
-* Leverage dynamic routing of Next.js
+* Next.js for an improved dev experience, dynamic routing and better performance with automatic code splitting
 * 0 vulnerabilities for the NPM packages installed
+* No Linting issues
+* Code coverage
 * Common API endpoint for Logs
 * Minimal set of dependencies in package.json
 * APIs have been annotated with @swagger decorator and documented in Swagger
-* Pagination, Sorting, Filtering implemented with material UI built-in features
-* No Linting issues
-* Code coverage
+* Table pagination, sorting, filtering implemented with material UI built-in features
 
 ## Getting started
 
@@ -110,6 +109,7 @@ http://localhost:3000/swagger
 
 ## TODOS
 
+* Implement server-side rendering
 * Implement API Authentication
 * Use database for data storage
 * Use server-side pagination for better performance

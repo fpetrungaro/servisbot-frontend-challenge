@@ -40,7 +40,7 @@ const LogDetail = () => {
     <Container>
       <Breadcrumb items={breadcrumbItems}/>
       <Typography variant="h5" gutterBottom style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
-        Log {logId}
+        Log: {logId}
       </Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>

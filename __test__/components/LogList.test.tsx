@@ -1,8 +1,7 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import LogList from '../../components/LogList'; // Adjust import according to your structure
+import LogList from '../../components/LogList';
 import { Log } from '@/types/dataModels';
-import WorkerList from "@/components/WorkerList";
 
 describe('LogList Component', () => {
   const logs: Log[] = [

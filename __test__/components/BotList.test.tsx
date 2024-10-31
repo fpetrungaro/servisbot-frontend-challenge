@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import BotList from '../../components/BotList'; // Adjust the import according to your directory structure
+import BotList from '../../components/BotList';
 import { Bot } from '@/types/dataModels';
 
 

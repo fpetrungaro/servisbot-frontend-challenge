@@ -32,7 +32,7 @@ const BotDetail = () => {
   const errorWorkers = useSelector((state: AppState) => state.workers.error);
 
   // fetch bot name from the store
-  // TODO; this could be improved by storing the current bot in the state
+  // TODO; this could be improved by having a current bot in the state
   const bots = useSelector((state: AppState) => state.bots.bots);
   const currentBot  = bots.find(b => b.id === botId) || {name: ''}// Find the bot by ID
   const botName = currentBot.name

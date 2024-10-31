@@ -20,15 +20,14 @@ const mockState = {
 
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
-  useSelector: jest.fn(),
+  useSelector: jest.fn().mockImplementation((selectorFn) => {
+    // Call the selector function with the mock state
+    return selectorFn(mockState);
+  }),
   useDispatch: () => jest.fn(),
   Provider: ({ children }) => children,
 }));
 describe('Home Component', () => {
-
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
 
   it('renders the welcome message', () => {
     render(
@@ -53,7 +52,7 @@ describe('Home Component', () => {
 
   it('renders BotList component with bots', () => {
     render(
-      <Provider store={{ getState: () => mockState, subscribe: jest.fn() }}>
+      <Provider store={mockStore(mockState)}>
         <Home />
       </Provider>
     );

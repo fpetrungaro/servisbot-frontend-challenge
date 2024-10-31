@@ -1,7 +1,6 @@
 /*
 This component shows logs for a specific worker, which is associated with a specific bot.
 */
-
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';

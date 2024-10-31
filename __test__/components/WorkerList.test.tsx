@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import WorkerList from '../../components/WorkerList'; // Adjust import according to your structure
+import WorkerList from '../../components/WorkerList';
 import { Worker } from '@/types/dataModels';
 
 
