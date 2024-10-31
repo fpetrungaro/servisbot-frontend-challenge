@@ -66,15 +66,15 @@ This setup meets the requirements with clear structure and modularized code, all
 
 
 ## NPM tasks
-| Task                   | Description                                                        |
-|------------------------|--------------------------------------------------------------------|
-| generate               | Generate Data                                                      |
-| dev                    | Run dev build                                                      |
-| build                  | Build production build                                             |
-| start                  | Start production build                                             |
-| lint                   | Linting                                                            |
-| test                   | Run Jest Tests                                                     |
-| test:watch             | Run tests when a file changes                                      |
+| Task                   | Description                   |
+|------------------------|-------------------------------|
+| generate               | Generate Data                 |
+| dev                    | Run dev build                 |
+| build                  | Build production build        |
+| start                  | Start production build        |
+| lint                   | Linting                       |
+| test                   | Run Jest Tests with coverage  |
+| test:watch             | Run tests when a file changes |
 
 
 
