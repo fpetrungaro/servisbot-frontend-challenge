@@ -13,6 +13,7 @@ A getting started guide for this Server-Side rendering ServisBOT app.
 * Minimal set of dependencies in package.json
 * APIs have been annotated with @swagger decorator and documented in Swagger
 * Table pagination, sorting, filtering implemented with material UI built-in features
+* Snapshot testing and unit testing
 
 ## Getting started
 
