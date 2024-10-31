@@ -1,4 +1,4 @@
-import { configureStore, AnyAction } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { workerReducer, fetchWorkersByBotName } from '@/store/workerSlice';
 
 describe('Worker Slice', () => {

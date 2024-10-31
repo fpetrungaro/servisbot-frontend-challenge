@@ -1,5 +1,4 @@
-import { configureStore, AnyAction } from '@reduxjs/toolkit';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { botReducer, fetchBots, selectBots } from '@/store/botSlice';
 
 describe('Bot Slice', () => {

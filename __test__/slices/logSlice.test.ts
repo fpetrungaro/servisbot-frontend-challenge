@@ -1,5 +1,4 @@
-import { configureStore, AnyAction } from '@reduxjs/toolkit';
-import { createAsyncThunk } from '@reduxjs/toolkit';
+import { configureStore } from '@reduxjs/toolkit';
 import { logReducer, fetchLogSummaries, fetchLogById, selectLogSummaries, selectLog } from '@/store/logSlice';
 
 describe('Log Slice', () => {
