@@ -20,7 +20,7 @@ const Home = () => {
   return (
     <Container>
       <div style={{ display: 'flex', alignItems: 'center', marginBottom: '1rem' }}>
-        <Image src="/images/servisbot.jpeg" alt="Logo" width={40} height={40} />
+        <Image src="/images/servisbot.jpeg" alt="Logo" width={50} height={50} />
         <Typography variant="h4" style={{ color: '#1976d2', marginLeft: '0.5rem' }}>
           Welcome to the ServisBOT App
         </Typography>

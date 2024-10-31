@@ -39,7 +39,7 @@ import {readData} from "@/utils/fileReader";
  *                   type: string
  *                   description: The unique identifier of the associated worker
  *       400:
- *         description: Bad request, possibly due to a missing logId
+ *         description: Bad request, due to a missing/incorrect logId
  *       404:
  *         description: Log not found with the specified ID
  *       500:

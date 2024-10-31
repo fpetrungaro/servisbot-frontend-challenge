@@ -76,6 +76,7 @@ to run a test automatically when a file changes
 ```shell
 npm run test:watch
 ```
+Coverage is generated under `coverage` folder
 
 ## Documentation
 

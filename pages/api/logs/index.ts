@@ -37,7 +37,7 @@ import {readData} from "@/utils/fileReader";
  *                     format: date-time
  *                     description: The timestamp when the log entry was created.
  *       400:
- *         description: Bad request, invalid or missing botId parameter.
+ *         description: Bad request, invalid or missing botId parameter or invalid workerId parameter.
  *         content:
  *           application/json:
  *             schema:
@@ -70,6 +70,10 @@ import {readData} from "@/utils/fileReader";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     const {botId, workerId} = req.query;
+    if ((!botId) || (botId && botId.length < 36)
+        || (workerId && workerId.length < 36)) {
+        return res.status(400).json({error: 'Invalid Bot Id or Worker ID'});
+    }
     try {
         const logs = await readData('logs.json')
         // Filter logs by botId and workerId, if provided
