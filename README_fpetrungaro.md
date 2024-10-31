@@ -24,7 +24,7 @@ Node and NPM installed
 
 Install the dependencies
 ```shell
-npm run install
+npm install
 ```
 
 ### Run the App
