@@ -14,7 +14,7 @@ const BotList: React.FC<BotListProps> = ({ bots }) => {
       headerName: 'Bot Name',
       flex: 1,
       renderCell: (params) => (
-        <Link href={`/bot/${params.row.id}?botName=${encodeURIComponent(params.row.name)}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
+        <Link href={`/bot/${params.row.id}`} style={{ textDecoration: 'none', color: '#1976d2' }}>
           {params.value}
         </Link>
       ),

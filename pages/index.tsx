@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { AppState } from '../store';
+import {AppDispatch, AppState} from '../store';
 import { fetchBots, selectBots } from '../store/botSlice';
 import BotList from '../components/BotList';
 import { Button, Container, Typography } from '@mui/material';
@@ -8,7 +8,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const bots = useSelector(selectBots);
   const loadingBots = useSelector((state: AppState) => state.bots.loading);
   const errorBots = useSelector((state: AppState) => state.bots.error);

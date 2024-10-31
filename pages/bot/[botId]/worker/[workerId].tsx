@@ -5,7 +5,7 @@ This component shows logs for a specific worker, which is associated with a spec
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { AppState } from '@/store';
+import {AppDispatch, AppState} from '@/store';
 import {fetchLogSummaries, selectLogSummaries} from '@/store/logSlice';
 import LogList from '../../../../components/LogList';
 import { Container, Typography } from '@mui/material';
@@ -14,7 +14,7 @@ import Breadcrumb from "@/components/Breadcrumbs";
 const WorkerLogs = () => {
   const router = useRouter();
   const { botId, workerId } = router.query;
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   const logs = useSelector(selectLogSummaries);
   const loadingLogs = useSelector((state: AppState) => state.logs.loading);

@@ -6,7 +6,7 @@ It reuses 2 MUI components: WorkerList and LogList
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { AppState } from '@/store';
+import { AppState, AppDispatch } from '@/store';
 import { fetchWorkersByBotName } from '@/store/workerSlice'; // Action to fetch workers
 import { fetchLogSummaries, selectLogSummaries } from '@/store/logSlice'; // Action to fetch log summaries
 import WorkerList from '../../components/WorkerList';
@@ -17,9 +17,9 @@ import Breadcrumb from "@/components/Breadcrumbs";
 
 const BotDetail = () => {
   const router = useRouter();
-  const { botId, botName } = router.query;
+  const {botId} = router.query as { botId: string };
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
 
   // Fetch workers and logs from Redux store
   const workers = useSelector((state: AppState) => state.workers.workers);
@@ -30,6 +30,12 @@ const BotDetail = () => {
   // errors
   const errorLogs = useSelector((state: AppState) => state.logs.error);
   const errorWorkers = useSelector((state: AppState) => state.workers.error);
+
+  // fetch bot name from the store
+  // TODO; this could be improved by storing the current bot in the state
+  const bots = useSelector((state: AppState) => state.bots.bots);
+  const currentBot  = bots.find(b => b.id === botId) || {name: ''}// Find the bot by ID
+  const botName = currentBot.name
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -68,7 +74,7 @@ const BotDetail = () => {
             <AccordionDetails>
               {loadingLogs && <p>Loading logs...</p>}
               {errorLogs && <p style={{color: 'red'}}>Error fetching logs: {errorLogs}</p>}
-                <LogList logs={logs} from="bot"/>
+                <LogList logs={logs}  from="bot"/>
             </AccordionDetails>
           </Accordion>
         </Container>

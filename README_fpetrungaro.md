@@ -12,7 +12,8 @@ A getting started guide for this Server-Side rendering ServisBOT app.
 * Minimal set of dependencies in package.json
 * APIs have been annotated with @swagger decorator and documented in Swagger
 * Pagination, Sorting, Filtering implemented with material UI built-in features
-* 
+* No Linting issues
+* Code coverage
 
 ## Getting started
 
@@ -65,6 +66,17 @@ This setup meets the requirements with clear structure and modularized code, all
 
 
 ## NPM tasks
+| Task                   | Description                                                        |
+|------------------------|--------------------------------------------------------------------|
+| generate               | Generate Data                                                      |
+| dev                    | Run dev build                                                      |
+| build                  | Build production build                                             |
+| start                  | Start production build                                             |
+| lint                   | Linting                                                            |
+| test                   | Run Jest Tests                                                     |
+| test:watch             | Run tests when a file changes                                      |
+
+
 
 ## Tests
 ```shell
@@ -76,7 +88,11 @@ to run a test automatically when a file changes
 ```shell
 npm run test:watch
 ```
-Coverage is generated under `coverage` folder
+Coverage is generated under `coverage` folder, e.g.
+
+```html
+http://localhost:63342/servisbot-frontend-challenge/coverage/lcov-report/index.html
+```
 
 ## Documentation
 

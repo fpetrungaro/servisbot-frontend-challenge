@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouter } from 'next/router';
-import { AppState } from '@/store';
-import { fetchLogById, selectLog } from '../../store/logSlice';
+import { fetchLogById, selectLog } from '@/store/logSlice';
 import {Container, Typography, Paper, Grid, TextareaAutosize} from '@mui/material';
 import Breadcrumb from "@/components/Breadcrumbs";
+import {AppDispatch} from "@/store";
 
 const LogDetail = () => {
   const router = useRouter();
-  const { from,  logId } = router.query;
+  const { from,  logId } = router.query as { from: string, logId: string };
 
-  const dispatch = useDispatch();
+  const dispatch: AppDispatch = useDispatch();
   const log = useSelector(selectLog);
 
   useEffect(() => {

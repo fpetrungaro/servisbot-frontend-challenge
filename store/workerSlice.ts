@@ -1,5 +1,5 @@
 // worker slice for worker State management
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Worker } from '@/types/dataModels';
 
 
@@ -33,7 +33,7 @@ const workerSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchWorkersByBotName.fulfilled, (state, action: PayloadAction) => {
+      .addCase(fetchWorkersByBotName.fulfilled, (state, action) => {
         state.loading = false;
         state.workers = action.payload; // The API returns an array of workers
       })
@@ -46,7 +46,3 @@ const workerSlice = createSlice({
 });
 
 export const workerReducer = workerSlice.reducer;
-
-
-
-
