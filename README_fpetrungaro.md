@@ -2,7 +2,7 @@
 
 ## Introduction
 
-A getting started guide for this Server-Side rendering ServisBOT app.
+A getting started guide for ServisBOT app.
 
 ## Main Features
 * Next.js for an improved dev experience, dynamic routing and better performance with automatic code splitting
